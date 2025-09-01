@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Chatroom</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+  <div id="app-container" class="w-full max-w-2xl bg-white rounded-xl shadow-lg overflow-hidden h-full sm:h-auto sm:my-8">
+    
+    <!-- Choice Screen -->
+    <div id="choice-screen" class="flex flex-col items-center p-6 space-y-4 h-full sm:h-auto">
+      <h1 class="text-2xl font-bold text-indigo-700 text-center">Open Chatroom</h1>
+      <p class="text-gray-600 text-center">Enter a username to start chatting</p>
+      <input id="username-input" type="text"
+             placeholder="Enter your username"
+             class="border p-3 w-full rounded-md focus:ring-2 focus:ring-indigo-400 text-base" />
+      <button id="host-button" disabled
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-md w-full disabled:opacity-50 text-base">
+        Host a New Room
+      </button>
+      <button id="join-choice-button" disabled
+              class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-md w-full disabled:opacity-50 text-base">
+        Join an Existing Room
+      </button>
+      <div id="user-id-display" class="text-sm text-gray-500 text-center"></div>
+    </div>
+
+    <!-- Join Screen -->
+    <div id="join-screen" class="hidden flex flex-col items-center p-6 space-y-4 h-full sm:h-auto">
+      <h1 class="text-2xl font-bold text-indigo-700 text-center">Join a Room</h1>
+      <p class="text-gray-600 text-center">Enter the Room ID to join an existing chat</p>
+      <input id="room-input" type="text"
+             placeholder="Enter Room ID"
+             class="border p-3 w-full rounded-md focus:ring-2 focus:ring-indigo-400 text-base" />
+      <button id="join-button" disabled
+              class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-md w-full disabled:opacity-50 text-base">
+        Join Chat
+      </button>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chat-screen" class="hidden flex flex-col h-full sm:h-[80vh]">
+      <header class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white flex items-center justify-between px-4 py-3 font-semibold shadow-md sticky top-0 z-10">
+        <div class="truncate">
+          Room: <span id="room-name"></span>
+        </div>
+        <button id="exit-button"
+                class="bg-red-500 hover:bg-red-600 text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg shadow">
+          Exit
+        </button>
+      </header>
+
+      <main id="messages-container" class="flex-1 overflow-y-auto p-3 space-y-2 bg-gray-50"></main>
+
+      <footer class="p-3 border-t bg-white">
+        <form id="message-form" class="flex space-x-2">
+          <input id="message-input" type="text"
+                 placeholder="Type a message..."
+                 class="flex-1 border p-3 rounded-md focus:ring-2 focus:ring-indigo-400 text-base" />
+          <button type="submit"
+                  class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-base">
+            Send
+          </button>
+        </form>
+      </footer>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
