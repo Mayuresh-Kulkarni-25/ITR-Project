@@ -42,6 +42,7 @@ const hostButton = document.getElementById("host-button");
 const joinChoiceButton = document.getElementById("join-choice-button");
 const joinButton = document.getElementById("join-button");
 const exitButton = document.getElementById("exit-button");
+const copyRoomBtn = document.getElementById("copy-room-btn");
 
 const userIdDisplay = document.getElementById("user-id-display");
 const roomNameDisplay = document.getElementById("room-name");
@@ -208,7 +209,6 @@ window.addEventListener("load", () => {
     console.log("➡️ Showing Join screen");
     showScreen("join-screen");
     joinButton.disabled = false;
-    console.log("✅ Join button is now enabled:", !joinButton.disabled);
   });
 
   joinButton.addEventListener("click", () => {
@@ -223,5 +223,15 @@ window.addEventListener("load", () => {
     roomId = "";
     messagesContainer.innerHTML = "";
     showScreen("choice-screen");
+  });
+
+  copyRoomBtn.addEventListener("click", () => {
+    if (roomId) {
+      navigator.clipboard.writeText(roomId).then(() => {
+        console.log("📋 Room ID copied:", roomId);
+        copyRoomBtn.textContent = "Copied!";
+        setTimeout(() => (copyRoomBtn.textContent = "Copy"), 2000);
+      });
+    }
   });
 });

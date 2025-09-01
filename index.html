@@ -43,8 +43,13 @@
     <!-- Chat Screen -->
     <div id="chat-screen" class="hidden flex flex-col h-full sm:h-[80vh]">
       <header class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white flex items-center justify-between px-4 py-3 font-semibold shadow-md sticky top-0 z-10">
-        <div class="truncate">
-          Room: <span id="room-name"></span>
+        <div class="flex items-center space-x-2">
+          <span>Room:</span>
+          <span id="room-name" class="font-mono"></span>
+          <button id="copy-room-btn"
+                  class="bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-2 py-1 rounded shadow">
+            Copy
+          </button>
         </div>
         <button id="exit-button"
                 class="bg-red-500 hover:bg-red-600 text-white text-xs sm:text-sm font-semibold px-3 py-1 rounded-lg shadow">
